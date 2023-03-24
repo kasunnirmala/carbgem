@@ -1,0 +1,16 @@
+{
+    "name": "carbgem",
+    "request": "launch",
+    "type": "dart",
+    "flutterMode": "debug",
+    "program": "lib/main_development.dart",
+    "args": [
+        "--flavor",
+        "development",
+        "--dart-define",
+        "Flavor=development",
+        "-t",
+        "lib/main-development.dart",
+        "--no-sound-null-safety"
+    ]
+}

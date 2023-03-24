@@ -1,0 +1,1 @@
+export 'infection_map_page.dart';

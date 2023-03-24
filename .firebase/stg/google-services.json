@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "630018960377",
+    "project_id": "cbi-bitte-stg",
+    "storage_bucket": "cbi-bitte-stg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630018960377:android:b7aa83165f310b46142b28",
+        "android_client_info": {
+          "package_name": "com.carbgem.bitte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630018960377-gbom6f5evtcmu6g5hle494ccqej6jej8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmjmi8nTzQPWZb9e8SGzMYdbehGpQCGpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630018960377-gbom6f5evtcmu6g5hle494ccqej6jej8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "630018960377-52u3iluaurc0p8sljv0b2gj73jvbn60s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carbgem.bitte.stg"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:630018960377:android:245271d31e39f4af142b28",
+        "android_client_info": {
+          "package_name": "com.carbgem.bitte.stg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "630018960377-gqt5asfaglqnhp8blncdi892n6q923ta.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carbgem.bitte.stg",
+            "certificate_hash": "097b88b36c095dae66307cccffca050c25b01f54"
+          }
+        },
+        {
+          "client_id": "630018960377-gbom6f5evtcmu6g5hle494ccqej6jej8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmjmi8nTzQPWZb9e8SGzMYdbehGpQCGpI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "630018960377-gbom6f5evtcmu6g5hle494ccqej6jej8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "630018960377-52u3iluaurc0p8sljv0b2gj73jvbn60s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carbgem.bitte.stg"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

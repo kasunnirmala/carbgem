@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>630018960377-52u3iluaurc0p8sljv0b2gj73jvbn60s.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.630018960377-52u3iluaurc0p8sljv0b2gj73jvbn60s</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>630018960377-gqt5asfaglqnhp8blncdi892n6q923ta.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCxQuBko9DutP5p1d-AFj0CmX_khn41cTc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>630018960377</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.carbgem.bitte.stg</string>
+	<key>PROJECT_ID</key>
+	<string>cbi-bitte-stg</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cbi-bitte-stg.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:630018960377:ios:1a419cc3e10d3749142b28</string>
+</dict>
+</plist>

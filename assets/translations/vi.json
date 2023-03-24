@@ -1,0 +1,12 @@
+{
+  "email": "E-mail",
+  "password": "Mật khẩu",
+  "remember_me": "Ghi nhớ e-mail và mật khẩu",
+  "login": "Đăng nhập",
+  "register": "Đăng ký tài khoản mới",
+  "forgot_pw": "Quên mật khẩu",
+  "invalid_email": "E-mail không hợp lệ",
+  "english": "Tiếng Anh",
+  "vietnamese": "Tiếng Việt",
+  "japanese": "Tiếng Nhật"
+}

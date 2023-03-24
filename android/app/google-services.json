@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "1021328742377",
+    "project_id": "carbgem-bitte",
+    "storage_bucket": "carbgem-bitte.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021328742377:android:1bdfa38fc1882bf8041d78",
+        "android_client_info": {
+          "package_name": "com.carbgem.bitte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021328742377-iek7g084np39a47nfdeoookj8rgg5rm6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carbgem.bitte",
+            "certificate_hash": "aac81e1dc6a219604a54eec050745260963ce8d0"
+          }
+        },
+        {
+          "client_id": "1021328742377-jcvjo84j0dsgv8qsr354i32a1vkc9dug.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carbgem.bitte",
+            "certificate_hash": "831d29d274f0d2691abfa6cba9da3220883f19d6"
+          }
+        },
+        {
+          "client_id": "1021328742377-jighq2g3r3hofeo4c39l0nth2ej179l0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carbgem.bitte",
+            "certificate_hash": "1e9078e4155774e5b02e9c8fa140d1ebafda8b2d"
+          }
+        },
+        {
+          "client_id": "1021328742377-jvkugcijhapc6abkpdvgqm94ii4rn9n3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carbgem.bitte",
+            "certificate_hash": "96f6963c6d44a8b3ce3747b13c252a86345515dd"
+          }
+        },
+        {
+          "client_id": "1021328742377-nd1mqpeeqd5juhcv9r50bn487liond6d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.carbgem.bitte",
+            "certificate_hash": "f7fbce05035355b07957fd0e9ad8899a634b7c47"
+          }
+        },
+        {
+          "client_id": "1021328742377-k8oss7fa2dt3o7pg81pj2ko05750tccs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGOWBe-JxR5SFCc8s1JFtf7NYeFMMcj8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021328742377-k8oss7fa2dt3o7pg81pj2ko05750tccs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1021328742377-958dunrcbmjepkfqea1a9cgqbp6i6ihk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carbgemfree.carbgemFree"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1021328742377:android:fd2235c32a19b280041d78",
+        "android_client_info": {
+          "package_name": "com.carbgemfree.carbgem_free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1021328742377-k8oss7fa2dt3o7pg81pj2ko05750tccs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGOWBe-JxR5SFCc8s1JFtf7NYeFMMcj8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1021328742377-k8oss7fa2dt3o7pg81pj2ko05750tccs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1021328742377-958dunrcbmjepkfqea1a9cgqbp6i6ihk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carbgemfree.carbgemFree"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

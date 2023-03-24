@@ -1,0 +1,141 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+versionName="2.0.18"
+slackURL="https://hooks.slack.com/services/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"
+
+platform :android do
+  desc "Runs all the tests"
+  lane :test do
+    gradle(task: "test")
+  end
+
+  desc "Manage version code"
+    lane :increment_vc do
+      path = '../app/build.gradle'
+      re = /versionCode\s+(\d+)/
+      s = File.read(path)
+      versionCode = s[re, 1].to_i
+      increment_version_code(
+        gradle_file_path: "./app/build.gradle",
+        version_code: versionCode+1
+      )
+    end
+
+  desc "build demo"
+    lane :demo do
+      gradle(
+        flavor: "Production",
+        task: "clean bundle",
+        build_type: "release",
+        properties:{
+            "versionName" => versionName
+        }
+      )
+    end
+
+  desc "build Staging"
+    lane :stg_build do
+      gradle(
+        flavor: "Staging",
+        task: "clean bundle",
+        build_type: "release",
+        properties:{
+            "versionName" => versionName
+        }
+      )
+    end
+  # desc "Submit a new Beta Build to Crashlytics Beta"
+  #   lane :beta do
+  #       increment_vc
+  #       demo
+  #       firebase_app_distribution(
+  #            app: "1:1021328742377:android:1bdfa38fc1882bf8041d78",
+  #            groups: "Carbgem",
+  #            release_notes: "Lots of new avatars to try out!",
+  #            android_artifact_type: "AAB",
+  #            android_artifact_path: "../build/app/outputs/bundle/release/app-release.aab",
+  #            service_credentials_file: "../secrets/firebase_carbgem_bitte.json"
+  #       )
+#         crashlytics
+  
+    # sh "your_script.sh"
+    # You can also use other beta testing services here
+    # end
+
+  desc "Deploy a new version to the Google Play"
+  lane :deploy do
+    increment_vc
+    demo
+    upload_to_play_store(
+        skip_upload_apk: true,
+        skip_upload_metadata: true,
+        skip_upload_changelogs: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true,
+        track: "internal",
+        aab: "../build/app/outputs/bundle/productionRelease/app-production-release.aab",
+    )
+    path = '../app/build.gradle'
+    re1 = /versionCode\s+(\d+)/
+    s = File.read(path)
+    versionCode = s[re1, 1].to_i
+    slack(
+        channel: "#bitte-test-release",
+        slack_url: slackURL,
+        message: "Successfully deploy new version to Google Play Store Internal Testing Track",
+        attachment_properties: {
+            fields:[
+                {value: versionCode, title: "Google Play Version Code",},
+                {value: versionName, title: "Google Play Version Name",}
+            ]
+        }
+    )
+  end
+
+  desc "(STAGING) Deploy a new version to the Google Play"
+  lane :staging_deploy do
+    increment_vc
+    stg_build
+    upload_to_play_store(
+        package_name: "com.carbgem.bitte.stg",
+        skip_upload_apk: true,
+        skip_upload_metadata: true,
+        skip_upload_changelogs: true,
+        skip_upload_images: true,
+        skip_upload_screenshots: true,
+        release_status: "draft",
+        track: "internal",
+        aab: "../build/app/outputs/bundle/stagingRelease/app-staging-release.aab",
+    )
+    path = '../app/build.gradle'
+    re1 = /versionCode\s+(\d+)/
+    s = File.read(path)
+    versionCode = s[re1, 1].to_i
+    slack(
+        channel: "#bitte-test-release",
+        slack_url: slackURL,
+        message: "(STAGING, cbi-bitte-test)Successfully deploy new version to Google Play Store Internal Testing Track",
+        attachment_properties: {
+            fields:[
+                {value: versionCode, title: "Google Play Version Code",},
+                {value: versionName, title: "Google Play Version Name",}
+            ]
+        }
+    )
+  end
+end

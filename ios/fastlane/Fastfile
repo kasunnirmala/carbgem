@@ -1,0 +1,180 @@
+default_platform(:ios)
+
+APPLICATION_ID = ENV["APPLICATION_ID"]
+BUNDLE_IDENTIFIER = ENV["BUNDLE_IDENTIFIER"]
+PROVISIONING_PROFILE_SPECIFIER = ENV["PROVISIONING_PROFILE_SPECIFIER"]
+TEMP_KEYCHAIN_USER = ENV["TEMP_KEYCHAIN_USER"]
+TEMP_KEYCHAIN_PASSWORD = ENV["TEMP_KEYCHAIN_PASSWORD"]
+GIT_AUTHORIZATION = ENV["GIT_AUTHORIZATION"]
+ITC_TEAM_ID = ENV["ITC_TEAM_ID"]
+DEVELOPER_PORTAL_TEAM_ID = ENV["DEVELOPER_PORTAL_TEAM_ID"]
+slackURL="https://hooks.slack.com/services/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"
+
+def delete_temp_keychain(name)
+  delete_keychain(
+    name: name
+  ) if File.exist? File.expand_path("~/Library/Keychains/#{name}-db")
+end
+def create_temp_keychain(name, password)
+  create_keychain(
+    name: name,
+    password: password,
+    default_keychain: false,
+    unlock: false,
+    timeout: 0
+  )
+end
+def ensure_temp_keychain(name, password)
+  delete_temp_keychain(name)
+  create_temp_keychain(name, password)
+end
+
+platform :ios do
+versionName="2.0.18"
+versionCode="1"
+
+  desc "Test version number and build number"
+  lane :build_number do
+    increment_version_number(version_number: versionName)
+    version = get_version_number(xcodeproj: "Runner.xcodeproj")
+    buildNumber = get_build_number(xcodeproj: "Runner.xcodeproj")
+    increment_build_number(build_number: Integer(buildNumber)+1)
+    buildNumber1 = get_build_number(xcodeproj: "Runner.xcodeproj")
+    puts buildNumber
+    puts buildNumber1
+  end
+
+  desc "Push a new beta build to TestFlight"
+  lane :closed_beta do
+    keychain_name = TEMP_KEYCHAIN_USER
+    keychain_password = TEMP_KEYCHAIN_PASSWORD
+    ensure_temp_keychain(keychain_name, keychain_password)
+    currentVersion = get_version_number(xcodeproj: "Runner.xcodeproj")
+    currentNumber = get_build_number(xcodeproj: "Runner.xcodeproj")
+
+    if (currentVersion!=versionName)
+        buildNumber = 1
+    else
+        buildNumber = Integer(currentNumber) + 1
+    end
+
+    increment_build_number(build_number: buildNumber)
+    increment_version_number(version_number: versionName)
+
+    match(
+        type: 'appstore',
+        app_identifier: "#{BUNDLE_IDENTIFIER}",
+        git_private_key: "./id_fastlane",
+        readonly: true,
+        keychain_name: keychain_name,
+        keychain_password: keychain_password,
+    )
+
+    gym(
+        configuration: "Release-production",
+        workspace: "Runner.xcworkspace",
+        scheme: "production",
+        export_method: "app-store",
+        export_options: {
+            provisioningProfiles: {
+                APPLICATION_ID => PROVISIONING_PROFILE_SPECIFIER
+            }
+        }
+        # include_bitcode: true
+    )
+
+    pilot(
+        apple_id: "#{APPLICATION_ID}",
+        app_identifier: "#{BUNDLE_IDENTIFIER}",
+        team_id: "#{ITC_TEAM_ID}",
+        dev_portal_team_id: "#{DEVELOPER_PORTAL_TEAM_ID}",
+        itc_provider: "#{DEVELOPER_PORTAL_TEAM_ID}",  
+        skip_waiting_for_build_processing: true,
+        skip_submission: true,
+        distribute_external: false,
+        notify_external_testers: false,
+        ipa: "./Runner.ipa"
+    )
+
+    delete_temp_keychain(keychain_name)
+
+    slack(
+        channel: "#bitte-test-release",
+        slack_url: slackURL,
+        message: "Successfully deploy new version to Apple App Store Internal Testing Track",
+        attachment_properties: {
+            fields:[
+                {value: buildNumber, title: "Apple Play Version Code",},
+                {value: versionName, title: "Apple Play Version Name",}
+            ]
+        }
+    )
+  end
+
+  desc "Push a new beta build to TestFlight for staging env (carbgem-bitte-test)"
+  lane :staging_closed_beta do
+    keychain_name = TEMP_KEYCHAIN_USER
+    keychain_password = TEMP_KEYCHAIN_PASSWORD
+    ensure_temp_keychain(keychain_name, keychain_password)
+    currentVersion = get_version_number(xcodeproj: "Runner.xcodeproj")
+    currentNumber = get_build_number(xcodeproj: "Runner.xcodeproj")
+
+    if (currentVersion!=versionName)
+        buildNumber = 1
+    else
+        buildNumber = Integer(currentNumber) + 1
+    end
+
+    increment_build_number(build_number: buildNumber)
+    increment_version_number(version_number: versionName)
+
+    match(
+        type: 'appstore',
+        app_identifier: "#{BUNDLE_IDENTIFIER}",
+        git_private_key: "./id_fastlane",
+        readonly: true,
+        keychain_name: keychain_name,
+        keychain_password: keychain_password,
+    )
+
+    gym(
+        configuration: "Release-staging",
+        workspace: "Runner.xcworkspace",
+        scheme: "staging",
+        export_method: "app-store",
+        export_options: {
+            provisioningProfiles: {
+                APPLICATION_ID => PROVISIONING_PROFILE_SPECIFIER
+            }
+        }
+        # include_bitcode: true
+    )
+
+    pilot(
+        apple_id: "#{APPLICATION_ID}",
+        app_identifier: "#{BUNDLE_IDENTIFIER}",
+        team_id: "#{ITC_TEAM_ID}",
+        dev_portal_team_id: "#{DEVELOPER_PORTAL_TEAM_ID}",
+        itc_provider: "#{DEVELOPER_PORTAL_TEAM_ID}",  
+        skip_waiting_for_build_processing: true,
+        skip_submission: true,
+        distribute_external: false,
+        notify_external_testers: false,
+        ipa: "./Runner.ipa"
+    )
+
+    delete_temp_keychain(keychain_name)
+
+    slack(
+        channel: "#bitte-test-release",
+        slack_url: slackURL,
+        message: "Successfully deploy new version to Apple App Store Internal Testing Track (Staging app, carbgem-bitte-test)",
+        attachment_properties: {
+            fields:[
+                {value: buildNumber, title: "Apple Play Version Code",},
+                {value: versionName, title: "Apple Play Version Name",}
+            ]
+        }
+    )
+  end
+end

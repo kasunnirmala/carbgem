@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "138554221010",
+    "project_id": "cbi-bitte-dev",
+    "storage_bucket": "cbi-bitte-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138554221010:android:a6e83b94ccf995487f680b",
+        "android_client_info": {
+          "package_name": "com.carbgem.bitte"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138554221010-qj2hlnbtceelmnh3sohkmr139dp7feoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaUHCtBoOJCPsQrJlj_UGOLCbygXSAQB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138554221010-qj2hlnbtceelmnh3sohkmr139dp7feoi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "138554221010-091ul98ff6o93n4l60cbp8cc8quqnhfk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carbgem.bitte.dev"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138554221010:android:c65d82612aae27d67f680b",
+        "android_client_info": {
+          "package_name": "com.carbgem.bitte.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "138554221010-qj2hlnbtceelmnh3sohkmr139dp7feoi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaUHCtBoOJCPsQrJlj_UGOLCbygXSAQB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "138554221010-qj2hlnbtceelmnh3sohkmr139dp7feoi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "138554221010-091ul98ff6o93n4l60cbp8cc8quqnhfk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.carbgem.bitte.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

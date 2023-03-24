@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>138554221010-091ul98ff6o93n4l60cbp8cc8quqnhfk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.138554221010-091ul98ff6o93n4l60cbp8cc8quqnhfk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCAJpAQLymABekkWOqyrQxPGK2_MpcAnO4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>138554221010</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.carbgem.bitte.dev</string>
+	<key>PROJECT_ID</key>
+	<string>cbi-bitte-dev</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cbi-bitte-dev.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:138554221010:ios:6a7e6b67e31d5c457f680b</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>url_identifier_dev</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>app-1-138554221010-ios-6a7e6b67e31d5c457f680b</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
