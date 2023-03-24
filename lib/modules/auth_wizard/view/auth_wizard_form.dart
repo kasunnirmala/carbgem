@@ -24,6 +24,7 @@ class _AuthWizardFormState extends State<AuthWizardForm> {
         listener: (context, state) {
           setState(() {
             activeState = state.activeStep;
+            pageTitle = state.pageTitle;
           });
         },
         child: Scaffold(
@@ -44,35 +45,62 @@ class _AuthWizardFormState extends State<AuthWizardForm> {
                 child: Column(
                   children: [
                     Expanded(
-                      child: DotStepper(
-                        // direction: Axis.vertical,
-                        dotCount: 5,
-                        dotRadius: 15,
-
-                        /// THIS MUST BE SET. SEE HOW IT IS CHANGED IN NEXT/PREVIOUS BUTTONS AND JUMP BUTTONS.
+                      child: ImageStepper(
+                        images: [
+                          NetworkImage(
+                              'https://cdn-icons-png.flaticon.com/512/318/318476.png'),
+                          NetworkImage(
+                              'https://cdn-icons-png.flaticon.com/512/318/318476.png'),
+                          NetworkImage(
+                              'https://cdn-icons-png.flaticon.com/512/318/318476.png'),
+                          NetworkImage(
+                              'https://cdn-icons-png.flaticon.com/512/318/318476.png'),
+                          NetworkImage(
+                              'https://cdn-icons-png.flaticon.com/512/318/318476.png')
+                        ],
+                        stepRadius: 15,
                         activeStep: activeState,
-                        shape: Shape.rectangle,
-                        spacing: 20,
-
-                        // DOT-STEPPER DECORATIONS
-                        fixedDotDecoration: FixedDotDecoration(
-                          color: Colors.red,
-                        ),
-
-                        indicatorDecoration: IndicatorDecoration(
-                          // style: PaintingStyle.stroke,
-                          // strokeWidth: 8,
-                          color: Colors.deepPurple,
-                        ),
-                        lineConnectorDecoration: LineConnectorDecoration(
-                          color: Colors.red,
-                          strokeWidth: 0,
-                        ),
+                        lineLength: 25,
+                        enableNextPreviousButtons: false,
+                        onStepReached: (index) {
+                          onStateClicked(context, index);
+                        },
+                        steppingEnabled: false,
                       ),
+                      // child: DotStepper(
+                      //   // direction: Axis.vertical,
+                      //   dotCount: 5,
+                      //   dotRadius: 15,
+                      //   lineConnectorsEnabled: true,
+
+                      //   /// THIS MUST BE SET. SEE HOW IT IS CHANGED IN NEXT/PREVIOUS BUTTONS AND JUMP BUTTONS.
+                      //   activeStep: activeState,
+                      //   shape: Shape.rectangle,
+                      //   spacing: 20,
+
+                      //   onDotTapped: (tappedDotIndex) {
+                      //     onStateClicked(context, tappedDotIndex);
+                      //   },
+
+                      //   // DOT-STEPPER DECORATIONS
+                      //   fixedDotDecoration: FixedDotDecoration(
+                      //     color: Colors.red,
+                      //   ),
+
+                      //   indicatorDecoration: IndicatorDecoration(
+                      //     // style: PaintingStyle.stroke,
+                      //     // strokeWidth: 8,
+                      //     color: Colors.deepPurple,
+                      //   ),
+                      //   lineConnectorDecoration: LineConnectorDecoration(
+                      //     color: Colors.red,
+                      //     strokeWidth: 0,
+                      //   ),
+                      // ),
                     ),
                     Expanded(
                       flex: 11,
-                      child: LoginPage(),
+                      child: getView(activeState),
                     ),
                   ],
                 ),
@@ -80,5 +108,37 @@ class _AuthWizardFormState extends State<AuthWizardForm> {
             ),
           ),
         ));
+  }
+}
+
+Widget getView(int activeState) {
+  switch (activeState) {
+    case 0:
+    case 3:
+      return LoginPage();
+    case 1:
+      return SignUpPage();
+    default:
+      return LoginPage();
+  }
+}
+
+void onStateClicked(BuildContext context, int activeState) {
+  switch (activeState) {
+    case 0:
+      context.read<AuthWizardCubit>().initLoginStep();
+      break;
+    case 1:
+      context.read<AuthWizardCubit>().registerStep();
+      break;
+    case 2:
+      context.read<AuthWizardCubit>().messageStep();
+      break;
+    case 3:
+      context.read<AuthWizardCubit>().loginStep();
+      break;
+    case 4:
+      context.read<AuthWizardCubit>().otpStep();
+      break;
   }
 }

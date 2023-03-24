@@ -1,4 +1,5 @@
 import 'package:carbgem/modules/all.dart';
+import 'package:carbgem/modules/auth_wizard/auth_wizard.dart';
 import 'package:carbgem/modules/forgot_password/forgot_password.dart';
 import 'package:carbgem/modules/sign_up/sign_up.dart';
 import 'package:carbgem/widgets/widgets.dart';
@@ -243,7 +244,8 @@ class _SignUpButton extends StatelessWidget {
       //     previous.languageLocale != current.languageLocale,
       builder: (context, state) => TextButton(
         key: const Key("loginForm_createAccount_button"),
-        onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
+        // onPressed: () => Navigator.of(context).push<void>(SignUpPage.route()),
+        onPressed: () => context.read<AuthWizardCubit>().registerStep(),
         child: Text('register'.tr()),
       ),
     );
