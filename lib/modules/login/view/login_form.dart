@@ -33,67 +33,68 @@ class LoginForm extends StatelessWidget {
         },
         child: Align(
           alignment: Alignment(0, -1 / 3),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  height: 10,
-                ),
-                Image.asset(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Expanded(
+                child: Image.asset(
                   'assets/images/CarbGeM_wide.png',
                   height: 120,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 15.0, horizontal: 25.0),
-                  child: Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.grey.withOpacity(0.3),
-                              spreadRadius: 5,
-                              blurRadius: 5,
-                              offset: Offset(0, 3))
-                        ]),
-                    child: Column(
-                      children: [
-                        // SizedBox(height: 10,),
-                        // _LanguageSelector(),
-                        SizedBox(
-                          height: 20,
-                        ),
-                        _EmailInput(),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        _PasswordInput(),
-                        _RememberLoginCheckbox(),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        _LoginButton(),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        _SignUpButton(),
-                        _ForgotPasswordButton(),
-                      ],
+              ),
+              Expanded(
+                flex: 7,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 15.0, horizontal: 25.0),
+                    child: Container(
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.grey.withOpacity(0.3),
+                                spreadRadius: 5,
+                                blurRadius: 5,
+                                offset: Offset(0, 3))
+                          ]),
+                      child: Column(
+                        children: [
+                          // SizedBox(height: 10,),
+                          // _LanguageSelector(),
+                          SizedBox(
+                            height: 20,
+                          ),
+                          _EmailInput(),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          _PasswordInput(),
+                          _RememberLoginCheckbox(),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          _LoginButton(),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          _SignUpButton(),
+                          _ForgotPasswordButton(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
   }
 }
-
 
 class _EmailInput extends StatelessWidget {
   @override
@@ -126,8 +127,7 @@ class _EmailInput extends StatelessWidget {
                           : null),
                 );
               }),
-            )
-        );
+            ));
       },
     );
   }
