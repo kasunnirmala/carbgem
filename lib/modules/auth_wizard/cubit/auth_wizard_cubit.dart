@@ -1,6 +1,7 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bitte_api/bitte_api.dart';
 import 'package:bloc/bloc.dart';
+import 'package:carbgem/modules/all.dart';
 import 'package:carbgem/modules/basic_home/cubit/basic_home_cubit.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
@@ -31,5 +32,42 @@ class AuthWizardCubit extends Cubit<AuthWizardState> {
 
   void otpStep() {
     emit(state.copyWith(activeStep: 4));
+  }
+
+  Widget getView(int activeState) {
+    switch (activeState) {
+      case 0:
+      case 3:
+        return LoginPage();
+      case 1:
+        return SignUpPage();
+      default:
+        return LoginPage();
+    }
+  }
+
+  Future<bool> onBackClicked(int activeState) {
+    onStateClicked(activeState - 1);
+    return Future<bool>.value(false);
+  }
+
+  void onStateClicked(int activeState) {
+    switch (activeState) {
+      case 0:
+        initLoginStep();
+        break;
+      case 1:
+        registerStep();
+        break;
+      case 2:
+        messageStep();
+        break;
+      case 3:
+        loginStep();
+        break;
+      case 4:
+        otpStep();
+        break;
+    }
   }
 }
