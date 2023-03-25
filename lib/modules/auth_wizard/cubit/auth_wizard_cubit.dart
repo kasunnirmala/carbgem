@@ -30,7 +30,7 @@ class AuthWizardCubit extends Cubit<AuthWizardState> {
     emit(state.copyWith(activeStep: 3, pageTitle: "Label_Title_login"));
   }
 
-  void otpStep() {
+  void activationStep() {
     emit(state.copyWith(activeStep: 4));
   }
 
@@ -41,13 +41,20 @@ class AuthWizardCubit extends Cubit<AuthWizardState> {
         return LoginPage();
       case 1:
         return SignUpPage();
+      case 2:
+        return ResendEmailPage();
+      case 4:
+        return ActivationPage();
       default:
         return LoginPage();
     }
   }
 
   Future<bool> onBackClicked(int activeState) {
-    onStateClicked(activeState - 1);
+    if ([1].contains(activeState)) {
+      onStateClicked(activeState - 1);
+    }
+
     return Future<bool>.value(false);
   }
 
@@ -66,7 +73,7 @@ class AuthWizardCubit extends Cubit<AuthWizardState> {
         loginStep();
         break;
       case 4:
-        otpStep();
+        activationStep();
         break;
     }
   }

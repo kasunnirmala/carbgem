@@ -59,7 +59,7 @@ class _AuthWizardFormState extends State<AuthWizardForm> {
                       enableNextPreviousButtons: false,
                       onStepReached: (index) =>
                           context.read<AuthWizardCubit>().onStateClicked(index),
-                      steppingEnabled: false,
+                      // steppingEnabled: false,
                     ),
                     Expanded(
                         child: context

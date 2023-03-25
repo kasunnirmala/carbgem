@@ -12,7 +12,8 @@ List<Page> onGenerateFirebaseFlutterViewPages(
     case FirebaseFlutterStatus.authenticated:
       return [BasicHomeRoute.page()];
     case FirebaseFlutterStatus.authenticatedUnverified:
-      return [ResendEmailPage.page()];
+      return [AuthWizardPage.page()];
+    // return [ResendEmailPage.page()];
     case FirebaseFlutterStatus.authenticatedPhoneUnregistered:
       return [PhoneRegisterPage.page()];
     case FirebaseFlutterStatus.unauthenticated:
